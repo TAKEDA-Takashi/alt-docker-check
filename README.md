@@ -1,8 +1,11 @@
-# Welcome to your CDK TypeScript project
+# alt-docker-check
 
-This is a blank project for CDK development with TypeScript.
+チェック
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+```
+$ npm install
+$ npm run cdk synth
+```
 
 ## Useful commands
 

@@ -1,16 +1,17 @@
-import * as cdk from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import * as lambdaPython from "@aws-cdk/aws-lambda-python-alpha";
+import { aws_lambda as lambda, Stack, StackProps } from "aws-cdk-lib";
 
-export class AltDockerCheckStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+import { Construct } from "constructs";
+
+import * as path from "path";
+
+export class AltDockerCheckStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'AltDockerCheckQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new lambdaPython.PythonFunction(this, "HelloFunction", {
+      entry: path.resolve(__dirname, "../lambda/src/hello"),
+      runtime: lambda.Runtime.PYTHON_3_9,
+    });
   }
 }
