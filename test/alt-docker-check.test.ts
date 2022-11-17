@@ -1,17 +1,14 @@
-// import * as cdk from 'aws-cdk-lib';
-// import { Template } from 'aws-cdk-lib/assertions';
-// import * as AltDockerCheck from '../lib/alt-docker-check-stack';
+import { App } from "aws-cdk-lib";
+import { Template } from "aws-cdk-lib/assertions";
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/alt-docker-check-stack.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//     // WHEN
-//   const stack = new AltDockerCheck.AltDockerCheckStack(app, 'MyTestStack');
-//     // THEN
-//   const template = Template.fromStack(stack);
+import { AltDockerCheckStack } from "../lib/alt-docker-check-stack";
 
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+test("Snapshot Test", () => {
+  const altDockerCheckStack = new AltDockerCheckStack(
+    new App({}),
+    "AltDockerCheckStack"
+  );
+
+  const template = Template.fromStack(altDockerCheckStack).toJSON();
+  expect(template).toMatchSnapshot();
 });

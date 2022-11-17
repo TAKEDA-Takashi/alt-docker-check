@@ -4,7 +4,7 @@
 
 ```
 $ npm install
-$ npm run cdk synth
+$ npm run test
 ```
 
 ## Useful commands
