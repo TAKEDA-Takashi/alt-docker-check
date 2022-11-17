@@ -1,2 +1,4 @@
+import pandas
+
 def handler(event, context) -> None:
-    print("Hello, Python!")
+    print(f"Hello, Python! {pandas.__version__}")
